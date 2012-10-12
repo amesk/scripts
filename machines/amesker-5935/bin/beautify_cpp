@@ -1,0 +1,7 @@
+#!/bin/sh
+dos2unix -o $1
+uncrustify -c ~/bin/uncrustify.cfg --replace $1
+cat $1 | sed -r 's/(public|protected|private):/ \1:/g'|sed -r 's/>\{/> {/g; s/([^ ]) \/\//\1 \/\//g' > tmp_file
+mv tmp_file $1
+
+

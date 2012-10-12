@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo mount.cifs //172.16.0.102/D$ /mnt -o user=amesk

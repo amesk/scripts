@@ -1,0 +1,2 @@
+#!/bin/sh
+dosbox -c 'vc.com' 2>&1 >/dev/null

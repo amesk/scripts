@@ -1,0 +1,2 @@
+#!/bin/sh
+dosbox -fullscreen -conf /home/amesk/.dosbox/bthorne.conf -noautoexec -c 'mount c ~/dosgames' -c 'c:' -c 'cd c:\games\bthorne' -c 'c:\games\bthorne\bthorne.exe' 2>&1 >/dev/null

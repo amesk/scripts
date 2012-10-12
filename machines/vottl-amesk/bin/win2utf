@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -x
+
+[ $# -eq 0 ] && usage
+
+usage(){
+    echo "Usage: $0 <infile> [<outfile>]"
+    exit 1
+}
+
+if [ $# eq 2 ] ; then
+    outfile=$2
+else
+    outfile=$1
+fi
+
+infile=$1
+
+iconv -f CP1251 -t UTF-8 "$infile" > "$infile.temp" || exit 1
+mv "$infile.temp" "$outfile"

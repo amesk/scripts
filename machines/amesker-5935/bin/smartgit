@@ -1,0 +1,3 @@
+#!/bin/sh
+export JAVA_HOME=/usr/lib/jvm/java-6-sun
+/home/amesk/smartgit-2_0_6/bin/smartgit.sh

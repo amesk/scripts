@@ -1,0 +1,317 @@
+cmake_minimum_required (VERSION 2.6)
+project (Tutorial)
+# The version number.
+set (Tutorial_VERSION_MAJOR 1)
+set (Tutorial_VERSION_MINOR 0)
+ 
+# configure a header file to pass some of the CMake settings
+# to the source code
+configure_file (
+  "${PROJECT_SOURCE_DIR}/TutorialConfig.h.in"
+  "${PROJECT_BINARY_DIR}/TutorialConfig.h"
+  )
+ 
+# add the binary tree to the search path for include files
+# so that we will find TutorialConfig.h
+include_directories("${PROJECT_BINARY_DIR}")
+ 
+# add the executable
+add_executable(Tutorial tutorial.cxx)
+
+Since the configured file will be written into the binary tree we must
+add that directory to the list of paths to search for include
+files. We then create a TutorialConfig.h.in file in the source tree
+with the following contents:
+
+
+// the configured options and settings for Tutorial
+#define Tutorial_VERSION_MAJOR @Tutorial_VERSION_MAJOR@
+#define Tutorial_VERSION_MINOR @Tutorial_VERSION_MINOR@
+
+
+> # with -fPIC
+> IF(UNIX AND NOT WIN32)
+>   FIND_PROGRAM(CMAKE_UNAME uname /bin /usr/bin /usr/local/bin )
+>   IF(CMAKE_UNAME)
+>     EXEC_PROGRAM(uname ARGS -m OUTPUT_VARIABLE CMAKE_SYSTEM_PROCESSOR)
+>     SET(CMAKE_SYSTEM_PROCESSOR ${CMAKE_SYSTEM_PROCESSOR} CACHE INTERNAL
+> "processor type (i386 and x86_64)")
+>      IF(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
+>       ADD_DEFINITIONS(-fPIC)
+>     ENDIF(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
+>   ENDIF(CMAKE_UNAME)
+> ENDIF(UNIX AND NOT WIN32)
+
+Why not use directly CMAKE_SYSTEM_PROCESSOR ?
+
+IF( CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" )
+  SET_TARGET_PROPERTIES(bar PROPERTIES COMPILE_FLAGS "-fPIC")
+ENDIF( CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" )
+
+OPTION(BUILD_TESTING "Build Unit Testing" ON)
+IF(BUILD_TESTING)
+   ENABLE_TESTING()
+ADD_DEFINITIONS(-WINCLUDE_TEST_CODE)
+ENDIF(BUILD_TESTING)
+
+CMAKE_INSTALL_PREFIX
+ cmake -DBUILD_SHARED_LIBS=OFF
+ ADD_DEFINITIONS( “-Wall -ansi -pedantic”)
+ MESSAGE( STATUS|FATAL_ERROR “message” 
+
+cmake -DCMAKE_INSTALL_PREFIX=/opt/stellarium
+
+project(SystemInfo CXX)
+message(STATUS "System: " ${CMAKE_SYSTEM_NAME} " " ${CMAKE_SYSTEM_VERSION})
+message(STATUS "Processor: " ${CMAKE_HOST_SYSTEM_PROCESSOR})
+if(${CMAKE_SYSTEM_NAME} STREQUAL Windows)
+if(MSVC)
+message(STATUS "Compiler: MSVC, version: " ${MSVC_VERSION})
+endif(MSVC)
+if(BORLAND) 
+message(STATUS "Compiler: BCC") 
+endif(BORLAND) 
+else(${CMAKE_SYSTEM_NAME} STREQUAL Linux) 
+message(STATUS "Only GCC is supported on Linux")
+endif(${CMAKE_SYSTEM_NAME} STREQUAL Windows) 
+message(STATUS "CMake generates " ${CMAKE_GENERATOR})
+
+include(CheckIncludeFile)
+check_include_file("GL/glx.h" HAVE_GLX_H)
+
+Команда check_library_exists() (модуль CheckLibraryExists) п
+
+cmake_minimum_required(VERSION 2.6)
+project(demolib C)
+add_library(demolib SHARED demolib.c demolib.h)
+if(${CMAKE_SYSTEM_NAME} STREQUAL Windows)
+set(LIB_INSTALL_PATH ${CMAKE_INSTALL_PREFIX}/lib/)
+elseif(${CMAKE_SYSTEM_NAME} STREQUAL Linux)
+set(LIB_INSTALL_PATH /usr/lib/)
+endif()
+install(TARGETS demolib DESTINATION ${LIB_INSTALL_PATH})
+find_path(LIB_INCLUDE_PATH string.h)
+install(FILES demolib.h DESTINATION ${LIB_INCLUDE_PATH})
+
+Если в мета-проекте CMake вам нужно получить значение переменной
+окружения, для которой не существует переменной-двойника в CMake, вы
+можете воспользоваться конструкцией $ENV{ИМЯ_ПЕРЕМЕННОЙ}, например:
+
+$ENV{SHELL}
+$ENV{WINDIR}
+
+Синтаксис обращения к переменным окружения из CMake не зависит от
+платформы.
+
+Создание модуля CMake
+
+Если разделяемую библиотеку планируется использовать во многих
+проектах, целесообразно написать для нее собственный модуль, в котором
+будет выполняться поиск связанных с библиотекой файлов. Мы напишем
+такой модуль для библиотеки demolib (хотя, честно говоря, широкое
+распространение этой библиотеки не предвидится). О том, что именно
+делают модули расширений CMake, говорилось в предыдущий
+статье. Перейдем сразу к начинке модуля (файл FindDemoLib.cmake):
+
+
+include(FindPackageHandleStandardArgs)
+if(DEMOLIB_INCLUDE_DIR AND DEMOLIB_LIBRARIES)
+set(DemoLib_FIND_QUIETLY TRUE)
+endif(DEMOLIB_INCLUDE_DIR AND DEMOLIB_LIBRARIES)
+find_path(DEMOLIB_INCLUDE_HINT string.h)
+find_path(DEMOLIB_INCLUDE_DIR demolib.h HINTS ${DEMOLIB_INCLUDE_HINT})
+find_library(DEMOLIB_LIBRARIES demolib HINTS $ENV{PROGRAMFILES}/demolib/lib/ /usr/lib)
+find_package_handle_standard_args(DemoLib DEFAULT_MSG DEMOLIB_LIBRARIES DEMOLIB_INCLUDE_DIR)
+mark_as_advanced(DEMOLIB_LIBRARIES)
+Самое меньшее, что должен сделать модуль загрузки разделяемой
+библиотеки XXX, - записать в переменные XXX_INCLUDE_DIR и
+XXX_LIBRARIES пути, соответственно, к заголовочным файлам и самой
+библиотеке. Кроме того должны быть инициализированы служебные
+переменные, например XXX_FOUND. Помимо этого модуль может
+предоставлять специальные команды, дополнительные переменные и многое
+другое, но в нашем примере мы ограничимся минимумом. Модуль
+FindDemoLib записывает путь к библиотеке demolib в переменную
+DEMOLIB_LIBRARIES, а путь к файлу demolib.h – в переменную
+DEMOLIB_INCLUDE_DIR.
+
+Подготовка к распространению
+
+Помимо пакета CMake компания Kitware выпускает еще несколько полезных
+пакетов, в том числе CPack – средство создания дистрибутивов. Пакет
+CPack входит в состав пакета CMake и им можно управлять из сценариев
+CMake, так что уместно будет рассмотреть CPack здесь. Для того чтобы
+задействовать CPack в сценарии CMake достаточно включить в сценарий
+модуль расширения CMake:
+
+
+include(CPack)
+
+Если теперь мы запустим утилиту cmake, то в результирующем Make-файле
+появятся цели package и package_source. Первая цель предназначена для
+создания двоичного пакета, вторая – для создания пакета
+исходников. Если теперь мы скомандуем
+
+
+sudo make package
+
+(команду make package необходимо выполнять от имени
+суперпользователя), то в результате получим файл сценария оболочки с
+расширением .sh, а также файлы с расширениями .tar.gz, tar.Z и
+tar.bz2. Имена файлов сконструированы из имени проекта, номера версии
+и названия платформы. Например, для проекта demolib, на примере
+которого мы изучаем CPack, все эти файлы будут иметь имя
+demolib-0.1.1-Linux. Перечисленные файлы представляют собой двоичные
+пакеты в разных форматах (по умолчанию CPack создает сразу несколько
+пакетов). Файл с расширением .sh – это сценарий оболочки с встроенным
+архивом tar.gz. Если мы запустим сценарий на выполнение, он задаст нам
+несколько вопросов по поводу согласия с лицензией и путей установки,
+после чего (если наши ответы его устроят) распакует содержимое
+встроенного архива в заданную директорию. Файлы с расширениями .tar.*
+в комментариях не нуждаются.
+
+Если изложенное выше навело вас на мысль, что создавать двоичные
+пакеты с помощью CPack очень просто, то вы почти правы. На практике,
+однако, можно столкнуться с некоторыми сложностями. Механизм генерации
+пакетов CMake-CPack использует инструкции, заданные нами для генерации
+цели install (установки проекта). Попросту говоря, для создания цели
+package умалчиваемое значение переменной CMAKE_INSTALL_PREFIX
+(напомню, что эта переменная содержит путь к корневой директории для
+установки) заменяется на путь к некоей временной директории. Далее
+вызывается цель install, в результате чего выполняется «холостая»
+установка проекта во временную директорию. Затем содержимое временной
+директории упаковывается в архивы. Этот факт имеет несколько
+последствий. Во-первых, вы можете создать двоичный пакет только в том
+случае, если ваш мета-проект содержит инструкции для генерации цели
+install. Во-вторых, поскольку процесс создания пакета использует
+подмену значения CMAKE_INSTALL_PREFIX, генерация может пройти успешно
+только в том случае, если команды install() используют эту
+переменную. Если вы выполняете нестандартные действия с директориями,
+будьте готовы к неожиданным проблемам с генерацией пакетов. Для того
+чтобы CMake мог задействовать переменную CMAKE_INSTALL_PREFIX, в
+команде install() следует указывать относительные, а не абсолютные
+пути (например, lib а не /usr/lib). Наконец, в-третьих, выполнение
+процесса установки в ходе генерации пакета может вызвать побочные
+эффекты в том случае, если установка включает в себя какие-то действия
+помимо копирования файлов.
+
+
+Конфигурирование CPack из мета-проектов CMake выполняется с помощью переменных, которые использует модуль CPack. Перечислим наиболее интересные переменные.
+
+CPACK_BINARY_DEB – указывает, нужно ли создавать пакет в формате Debian.
+CPACK_BINARY_RPM – указывает, нужно ли создавать RPM-пакет.
+CPACK_BINARY_STGZ – указывает, нужно ли создавать файл скрипта оболочки со встроенным архивом tar.gz.
+CPACK_BINARY_TGZ – нужно ли создавать архив tar.gz.
+CPACK_BINARY_TZ – нужно ли создавать архив tar.Z.
+CPACK_BINARY_TBZ2 – нужен ли архив tar.bz2.
+Последним 4 переменным по умолчанию присвоено значение ON, первым 2 – OFF.
+
+CPACK_INSTALL_PREFIX – переменная, в которой сохраняется полное имя корневой директории для установки проекта.
+CPACK_PACKAGE_DESCRIPTION_FILE – путь к файлу с развернутым описанием собираемого пакета.
+CPACK_PACKAGE_DESCRIPTION_SUMMARY – краткое описание собираемого пакета.
+CPACK_PACKAGE_FILE_NAME – основа имени файла пакета.
+CPACK_PACKAGE_INSTALL_DIRECTORY – директория, в которую по умолчанию извлекается содержимое пакета.
+CPACK_PACKAGE_VENDOR – имя сборщика пакета.
+CPACK_PACKAGE_VERSION_MAJOR, CPACK_PACKAGE_VERSION_MINOR,
+CPACK_PACKAGE_VERSION_RELEASE – эти три переменные содержат три цифры
+версии распространяемого ПО – старшую, младшую и номер релиза
+соответственно (используется, в том числе, при конструировании имени
+файла пакета).
+
+CPACK_RESOURCE_FILE_LICENSE – путь к файлу с текстом лицензии.
+CPACK_RESOURCE_FILE_README – путь к файлу README.
+CPACK_SYSTEM_NAME – имя системы (используется, в том числе, при конструировании имени файла пакета).
+Если результатом сборки является скрипт или пакет RPM, информация из
+файлов лицензии, README и WELCOME становится частью пакета. Для того
+чтобы изменить настройки CPack, заданные по умолчанию, нужно изменить
+значения соответствующих переменных перед вызовом include(). Например,
+если мы хотим создать пакет RPM и привести его имя к классическому
+виду, можем написать:
+
+
+set(CPACK_BINARY_RPM ON)
+set(CPACK_SYSTEM_NAME i686)
+include (CPack)
+С учетом всего вышеизложенного вариант сценарий сборки demolib с
+дополнительной целью package выглядит так:
+
+cmake_minimum_required(VERSION 2.6)
+project(demolib C)
+if(UNIX)
+set(CMAKE_INSTALL_PREFIX /usr)
+set(CPACK_BINARY_RPM ON)
+set(CPACK_SYSTEM_NAME i686)
+endif(UNIX)
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Demo Library Project")
+set(CPACK_PACKAGE_VERSION 1.0.0)
+include(CPack)
+add_library(demolib SHARED demolib.c demolib.h)
+install(TARGETS demolib DESTINATION lib)
+install(FILES demolib.h DESTINATION include)
+<<<<<<< HEAD
+
+SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.3.1-6), libgcc1 (>= 1:3.4.2-12)")
+=======
+>>>>>>> 3ef98d33e32219025f1779d3ecbaaa6fec414876
+if CPACK_DEBIAN_PACKAGE_MAINTAINER is not set, CPACK_PACKAGE_CONTACT
+will be used instead
+
+Control Extra
+Additional control files (optional)
+In order to perform pre-, or post-install configuration, certain files can be provided in the DEBIAN/ folder in the debian package (postinst, preinst, postrm, prerm)
+You should set: CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA
+E.g.
+   set( CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA
+   "${CMAKE_CURRENT_SOURCE_DIR}/CMake/debian/postinst;${CMAKE_CURRENT_SOURCE_DIR}/CMake/debian/prerm;"
+   )
+
+
+CPACK_PACKAGE_DESCRIPTION_SUMMARY	 Package short description	 Here is my short description
+CPACK_PACKAGE_DESCRIPTION	 Package description	 Here is my long description
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Here is the list of CPack RPM specific variables (some variable are not yet supported because there are some patches pending):
+Variable Name	Description	Default value
+CPACK_RPM_PACKAGE_SUMMARY	 The RPM package summary	 CPACK_PACKAGE_DESCRIPTION_SUMMARY
+CPACK_RPM_PACKAGE_NAME	 The RPM package name	 CPACK_PACKAGE_NAME
+CPACK_RPM_PACKAGE_VERSION	 The RPM package version	 CPACK_PACKAGE_VERSION
+CPACK_RPM_PACKAGE_ARCHITECTURE	 The RPM package architecture. This may be set to "noarch" if you know you are building a noarch package.	 -
+CPACK_RPM_PACKAGE_RELEASE	 The RPM package release. This is the numbering of the RPM package itself, i.e. the version of the packaging and not the version of the content (see CPACK_RPM_PACKAGE_VERSION). One may change the default value if the previous packaging was buggy and/or you want to put here a fancy Linux distro specific numbering.	 1
+CPACK_RPM_PACKAGE_LICENSE	 The RPM package license policy.	 "unknown"
+CPACK_RPM_PACKAGE_GROUP	 The RPM package group (see /usr/share/doc/rpm-*/GROUPS )	 "unknown"
+CPACK_RPM_PACKAGE_VENDOR	 The RPM package vendor	 CPACK_PACKAGE_VENDOR if set or "unknown" if not set
+CPACK_RPM_PACKAGE_DESCRIPTION	 The RPM package description	 The content of CPACK_PACKAGE_DESCRIPTION_FILE if set or "no package description available" if not set
+CPACK_RPM_PACKAGE_REQUIRES	 May be used to set RPM dependencies. see [RPM dependencies specification]) for precise syntax. Note that you must enclose the complete requires string between quotes, for example:
+set(CPACK_RPM_PACKAGE_REQUIRES "python >= 2.5.0, cmake >= 2.8")	 -
+CPACK_RPM_PACKAGE_PROVIDES	 May be used to set the virtual packages provided by the RPM. It is somewhat complimentary to CPACK_RPM_PACKAGE_REQUIRES, but note that you do not need to list things like libraries, etc. here, since rpmbuild will figure that out by itself when generating the RPM. Most packages leave this blank. NOTE: This variable was added in cmake 2.8.1 (see [Bug9584]).	 -
+CPACK_RPM_SPEC_INSTALL_POST	 May be used to set an RPM post-install command inside the spec file. For example setting it to "/bin/true" may be used to prevent rpmbuild to strip binaries (see [Bug7435]). This is not to be confused with .spec %post section (the action specified here is being invoked at rpmbuild time, not post-install-package time at user side)	 -
+CPACK_RPM_SPEC_MORE_DEFINE	 May be used to add any %define lines to the generated spec file.	 -
+CPACK_RPM_USER_BINARY_SPECFILE	 May be used to specify a user provided spec file instead of generating one. This is an feature which currently needs a patch see [Bug9679]	 -
+CPACK_RPM_GENERATE_USER_BINARY_SPECFILE_TEMPLATE	 May be used to generate a template for a user provided spec file. This is an feature which currently needs a patch see [Bug9679]	 -
+CPACK_RPM_<POST/PRE>_<UN>INSTALL_SCRIPT_FILE	 The content of the specified files will be embedded in the RPM spec file in the appropriate sections. This is an feature which currently needs a patch see [Bug8988]	 -
+CPACK_RPM_PACKAGE_DEBUG	 May be set when invoking cpack in order to
+trace debug informations during CPack RPM run. For example you may
+launch CPack like this cpack -D CPACK_RPM_PACKAGE_DEBUG=1 -G RPM
+-
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+set of variables I used in my main CMakeLists.txt, before any INSTALL:
+#--------------------------------------------
+# make sure libraries are found with the exec created
+#--------------------------------------------
+# use, i.e. don't skip the full RPATH for the build tree
+SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
+
+# when building, don't use the install RPATH already
+# (but later on when installing)
+SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE) 
+
+# the RPATH to be used when installing
+SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+
+# add the automatically determined parts of the RPATH
+# which point to directories outside the build tree to the install RPATH
+SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+set(CPACK_PACKAGE_INSTALL_DIRECTORY /)

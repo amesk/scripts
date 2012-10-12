@@ -1,0 +1,51 @@
+#!/bin/sh
+
+mkdir repository
+mkdir repository/conf
+cat >repository/conf/distributions <<EOT  
+Origin: Debian
+Suite: testing
+AlsoAcceptFor: unstable experimental
+Codename: natty
+Version: 5.0
+Architectures: i386 amd64 source
+Components: main contrib non-free
+UDebComponents: main contrib non-free
+Description: my local repository
+EOT
+
+# reprepro export
+# reprepro createsymlinks 
+#reprepro -b BASEDIR -C РАЗДЕЛ includedeb ВЕТКА /путь/до/файла/имя_файла.deb
+#reprepro -C РАЗДЕЛ include ВЕТКА /путь/до/файла/имя_файла.changes
+# reprepro remove ветка имя_пакета
+
+# /etc/apt/sources.list deb file:///путь_к_папке_репозитория/ ветка разделы
+# deb file:///home/repository/ lenny main contrib non-free
+
+#reprepro -b ./repository/  --ask-passphrase includedeb squeeze /var/cache/apt/archives/*.deb
+#sudo apt-key add /tmp/key.asc
+# dpkg-scanpackage
+
+reprepro and signing
+
+In order to sign the repository you need to provide the pass phrase of your key. This may become tedious. Here is what you can do. Add these bits of script:
+~/.profile near the top (notice exec):
+# gpg-agent is a daemon to manage secret (private) keys independently from any protocol.  It is used as a backend for gpg and gpgsm as well as for a couple of other utilities.
+if [ -z "$GPG_AGENT_INFO" ]; then
+        mkdir -p "${HOME}/.gpg-agent-info"
+        exec gpg-agent --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info/`hostname`" --daemon $SHELL -l
+fi
+~/.bashrc:
+# gpg-agent is a daemon to manage secret (private) keys independently from any protocol.  It is used as a backend for gpg and gpgsm as well as for a couple of other utilities.
+if [ -f "${HOME}/.gpg-agent-info/`hostname`" ]; then
+  . "${HOME}/.gpg-agent-info/`hostname`"
+  export GPG_AGENT_INFO
+  export SSH_AUTH_SOCK
+  export SSH_AGENT_PID
+fi      
+GPG_TTY=$(tty)
+export GPG_TTY
+Make sure ~/.bashrc is sourced in from ~/.profile and that you do not have interfering ~/.bash_login, ~/.login, ~/.bash_profile etc. lying around.
+This allows you to type the pass phrase of your keys less often.
+Warning: this method is easily abused by root! - but then, what isn't? There is a window of time (10 minutes for gpg, 30 for ssh - by default) after you unlock your key in the agent when root could use your key.

@@ -1,0 +1,1 @@
+/opt/transas/uninav/bin/mongod --dbpath /opt/transas/uninav/share/mongo

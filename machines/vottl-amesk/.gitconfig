@@ -1,0 +1,13 @@
+[user]
+	name = amesk
+	email = alexei.eskenazi@transa.com
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[diff]
+	tool = meld
+
+[difftool "meld"]
+	cmd = "meld \"$LOCAL\" \"$REMOTE\""

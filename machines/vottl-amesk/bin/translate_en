@@ -1,0 +1,103 @@
+#!/bin/sh
+
+input=-
+output=
+wait_time=0
+verbose=0
+replace=0
+
+url_encode() {
+ [ $# -lt 1 ] && { return; }
+
+encodedurl="$*";
+
+ # make sure hexdump exists, if not, just give back the url
+ [ ! -x "/usr/bin/hexdump" ] && { return; }
+
+# $1 ~  /0[adAD]/               {                      next } # strip newlines
+ encodedurl=`
+   echo "$encodedurl" | hexdump -v -e '1/1 "%02x\t"' -e '1/1 "%_c\n"' |
+   LANG=C awk '
+     $1 == "20"                    { printf("%s",   "+"); next } # space becomes plus
+     $2 ~  /^[a-zA-Z0-9.*()\/-]$/  { printf("%s",   $2);  next } # pass through what we can
+                                   { printf("%%%s", $1)        } # take hex value of everything else
+   '`
+ echo "$encodedurl"
+}
+
+google_translate() {
+  arg="$*"
+#  wget -U "Mozilla/5.0" -qO - "http://translate.google.com/translate_a/t?client=t&text=$arg&sl=ru&tl=en"| sed 's/\[\[\[\"//' | cut -d \" -f 1
+wget -qO- translate.yandex.ru/tr.json/translate --post-data="srv=tr-text&lang=ru-en&text=$arg" | sed 's/"//g'
+}
+
+usage() {
+  echo "Usage: $0 [-i infile] [-o outfile] [-w wait-second] [-h]" 2>&1
+}
+
+log_work() {
+if [ "$verbose" = "1" ] ; then
+    echo $* 2>&1
+fi
+}
+
+while getopts "vhi:o:w:r" opt; do
+    case $opt in
+        h)
+            usage
+            exit 0
+            ;;
+        v)
+            verbose=1
+            ;;
+        i)
+            input=$OPTARG
+            log_work "-i was triggered ($input)"
+            ;;
+        o)
+            output=$OPTARG
+            log_work "-o was triggered ($output)"
+            ;;
+        r)
+            replace=1
+            log_work "-r was triggered (override mode)"
+            ;;
+        w)
+            wait_time=$OPTARG
+            log_work "-w was triggered ($wait_time)"
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument." 2>&1
+            usage
+            exit 1
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" 2>&1
+            usage
+            exit 1
+            ;;
+    esac
+done
+
+if [ "$input" = "-" ] ; then
+    text=$(cat -)
+else
+    text=$(cat $input)
+fi
+
+[ "$verbose" = "1" ] && log_work "Processing  input $input..."
+
+encoded=$(url_encode "$text")
+result=$(google_translate "$encoded")
+
+if [ "$replace" = "1" ] ; then
+    output=$input
+fi
+
+if [ "$output" = "" ] ; then
+   echo "$result"
+else
+   echo "$result" > ${output}
+fi
+
+
