@@ -1,0 +1,1 @@
+@set path=%PATH%;C:\PROGRA~1\WINDOW~1.5SD\TOOLS

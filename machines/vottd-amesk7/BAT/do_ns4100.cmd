@@ -1,0 +1,1 @@
+@mk -m PRJ_NS4100_MSI %1

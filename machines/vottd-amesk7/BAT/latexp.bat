@@ -1,0 +1,1 @@
+@set PATH=%PATH%;E:\NSData\App\texmf\miktex\bin

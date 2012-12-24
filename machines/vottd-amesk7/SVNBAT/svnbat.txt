@@ -1,0 +1,40 @@
+pell@<hostname>:~> for i in `ls -N -1 ~/bin/svn*` ; do echo $i ; cat $i ; echo  ; done
+/home/pell/bin/svnhead
+#!/bin/sh
+svn info $@ | grep \^Last\ Changed\ Rev: | sed 's/^.*\ \([[:digit:]]\+\)$/\1/'
+ 
+/home/pell/bin/svnnew
+#!/bin/sh
+for i in `svn st "$@" | grep '^?' | sed 's/^?//'` ; do svn add $i ; done
+ 
+/home/pell/bin/svnrange
+#!/bin/sh
+REPOURL=`svnurl $@`
+HEADREV=`svn log --revision HEAD:1 --stop-on-copy $REPOURL | \
+        grep '^r[[:digit:]]\+' | \
+        sed 's/^r\([[:digit:]]\+\).*$/\1/' | \
+        sort -g | head -1`
+TAILREV=`svn log --revision HEAD:1 --stop-on-copy $REPOURL | \
+        grep '^r[[:digit:]]\+' | \
+        sed 's/^r\([[:digit:]]\+\).*$/\1/' | \
+        sort -g | tail -1`
+echo $HEADREV:$TAILREV
+ 
+/home/pell/bin/svnstat
+#!/bin/sh
+
+
+svn info $@ | grep ^URL: | sed "s/^URL: //"
+svn log -r 1:HEAD $@ | grep \^r[[:digit:]\+] | \
+        sed 's/^r\([[:digit:]]*\)\ |\ \([[:alnum:]]*\).*$/\2/' | \
+        sort | uniq --count | sort -g
+ 
+/home/pell/bin/svntoday
+#!/bin/sh
+svn up $@ >/dev/null 2>&1
+TODAY=`date +%Y-%m-%d`
+svn log --revision {`date +%Y-%m-%d`}:HEAD $@
+ 
+/home/pell/bin/svnurl
+#!/bin/sh
+svn info $@ | grep ^URL: | sed "s/^URL: //

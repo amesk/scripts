@@ -1,0 +1,320 @@
+Build 1.11.005.0898 (69541:69570) at 2008-04-03 02:43:07
+--------------------------------------------------------
+
+* убрана работа с конфигурацией из статического объекта
+* Системы очистки HDD 
+
+Build 1.11.005.0897 (69524:69540) at 2008-04-01 02:36:47
+--------------------------------------------------------
+
+* NAVTECH-1138. Падение, вызванное обращением к уже разрушенному 
+  автозагрузчику.
+* NAVTECH-1042 Исправлены баги, внесенные предыдущим исправлением. 
+  Переименован (и перенесен) параметр в Localhost (rev. 69537)
+
+Build 1.11.005.0896 (69521:69523) at 2008-03-31 02:36:03
+--------------------------------------------------------
+
+* Merged revisions 69521 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69521 | amesk | 2008-03-30 10:42:10 +0400 (Вс, 30 мар 2008) | 1 line
+    Совсем финальный файл шаблонов от Димы Евстигнеева под релиз 1.11.005.
+
+Build 1.11.005.0895 (69472:69520) at 2008-03-29 02:41:43
+--------------------------------------------------------
+
+* Merged revisions 69511 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69511 | krush | 2008-03-28 16:52:32 +0300 (Пт, 28 мар 2008) | 1 line
+    NAVTECH-963
+
+Build 1.11.005.0894 (69444:69471) at 2008-03-27 02:35:49
+--------------------------------------------------------
+
+* устранена ошибка прохода по количеству объектов( зональных или береговых 
+  линий ) более чем указанное в конфигурации или значении по умолчанию
+
+Build 1.11.005.0893 (69429:69443) at 2008-03-26 02:34:05
+--------------------------------------------------------
+
+* NAVTECH-1112: Изменения в правах подтверждения аларма
+* NAVTECH-1106 исправлена проблема синхронизации Range.(rev. 69439)
+
+Build 1.11.005.0892 (69411:69428) at 2008-03-25 02:37:01
+--------------------------------------------------------
+
+* Merged revisions 69420 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69420 | amesk | 2008-03-22 15:47:20 +0300 (Сб, 22 мар 2008) | 1 line
+    NAVTECH-1105. Изменены стили вывода окон сообщений на | MB_SYSTEMMODAL.
+
+Build 1.11.005.0891 (69396:69410) at 2008-03-21 02:34:12
+--------------------------------------------------------
+
+* Исправления по пункту NAVTECH-1100
+* Merged revisions 69404 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69404 | amesk | 2008-03-20 19:13:55 +0300 (Чт, 20 мар 2008) | 1 line
+    NAVTECH-1093. Квитирование Алармов с кнопки Alarms c клавиатуры 
+  ES3/ES4.
+* Merged revisions 69408 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69408 | amesk | 2008-03-20 23:15:04 +0300 (Чт, 20 мар 2008) | 1 line
+    NAVTECH-1093. Квитирование Алармов с кнопки Alarms c клавиатуры 
+  ES3/ES4 - отключение активации, принятой в NC3000 по просьбе Димы 
+  Евстигнеева.
+
+Build 1.11.005.0890 (69373:69395) at 2008-03-20 02:37:19
+--------------------------------------------------------
+
+* Merged revisions 69370 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69370 | amesk | 2008-03-19 01:42:49 +0300 (Ср, 19 мар 2008) | 1 line
+    NAVTECH-1069. Вставить e-Help в продукты 4000 серии - в интегратор 
+  добавлена иконка для вызова справки.
+* Merged revisions 69377 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69377 | amesk | 2008-03-19 11:11:20 +0300 (Ср, 19 мар 2008) | 1 line
+    NAVTECH-1081. Изменено название иконки интегратора c ECDIS на ECS.
+* NAVTECH-162.
+* Merged revisions 69392 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69392 | amesk | 2008-03-19 18:56:38 +0300 (Ср, 19 мар 2008) | 1 line
+    Финальная партия конфигов в релизе 1.11.005.
+
+Build 1.11.005.0889 (69355:69372) at 2008-03-19 02:39:29
+--------------------------------------------------------
+
+* TkRadar bugfixing (rev. 69357)
+
+Build 1.11.005.0888 (69331:69354) at 2008-03-18 02:43:59
+--------------------------------------------------------
+
+* NAVTECH-1084. Sailor "not responding" при активации режима AutoZoom на 
+  панели Dual
+
+Build 1.11.005.0887 (69309:69330) at 2008-03-14 02:35:07
+--------------------------------------------------------
+
+* Merged revisions 68791 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68791 | amesk | 2008-02-06 16:32:13 +0300 (Ср, 06 фев 2008) | 1 line
+    Возвращение свойству Lightness нормального редактора.
+* Merged revisions 69309 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69309 | amesk | 2008-03-13 11:16:27 +0300 (Чт, 13 мар 2008) | 1 line
+    Решение проблем с отрицательными величинами timezone.
+* Merged revisions 69313 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69313 | amesk | 2008-03-13 12:52:36 +0300 (Чт, 13 мар 2008) | 1 line
+    Решение проблемы с неправильной установкой свойства, когда редактором 
+  является "checkbox".
+* NAVTECH-1042. Исправлена ошибка Copy/Paste
+* Решено отключить в этом релизе ChannelManagement, поскольку ее так 
+  нормально и не протестировали.
+
+Build 1.11.005.0886 (69281:69308) at 2008-03-13 02:40:07
+--------------------------------------------------------
+
+* VDSS: исправлена ошибка с частым commit'ом/decommit'ом регионов 
+  кольцевого буфера.
+* rev. 69248 - Исправление Denial of service
+* NAVTECH-1067 Chart panel update freezing after width changing bug fixed. 
+  (Merged from trunk, rev. 69294).
+* Merged revisions 69287 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69287 | amesk | 2008-03-12 15:45:06 +0300 (Ср, 12 мар 2008) | 1 line
+    NAVTECH-1080. Исправлена ошибка в сериализации значений 
+  переименованных свойств.
+* Merged revisions 69300 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69300 | amesk | 2008-03-12 19:44:08 +0300 (Ср, 12 мар 2008) | 1 line
+    NAVTECH-162. Устраненен неинициализированный член класса в LcWrap, что 
+  начало приводить к падению Conning на старте.
+
+Build 1.11.005.0885 (69225:69280) at 2008-03-12 02:40:46
+--------------------------------------------------------
+
+* NAVTECH-970
+* Merged revisions 69264 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69264 | amesk | 2008-03-11 17:40:26 +0300 (Вт, 11 мар 2008) | 1 line
+    NAVTECH-162. Исправлена неправильная установка процессора обработки 
+  ошибок защиты, ведущая к падению.
+* NAVTECH-970 (рефакторинг)
+
+Build 1.11.005.0884 (69205:69224) at 2008-03-07 02:36:18
+--------------------------------------------------------
+
+* Merged revisions 
+  69045,69048-69050,69054,69057,69060-69067,69069-69081,69083,69091-69093,690
+  95,69097,69101-69106,69108,69110-69111,69114-69119,69121,69123-69129,69132-
+  69135,69137,69145-69148,69151-69153,69156-69157,69159-69160,69162-69163,691
+  65-69169,69171-69174,69176-69177,69179-69184,69186,69188,69190,69193-69200,
+  69202 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69045 | amesk | 2008-02-21 17:10:18 +0300 (Чт, 21 фев 2008) | 1 line
+    NAVTECH-162. LS0002 появляется на старте приложений
+    r69065 | amesk | 2008-02-22 12:32:58 +0300 (Пт, 22 фев 2008) | 1 line
+    Новые библиотеки TSL с исправлением ошибок работы с SD-картами.
+    r69111 | amesk | 2008-02-27 18:32:26 +0300 (Ср, 27 фев 2008) | 1 line
+    NAVTECH-162. Улучшена диагностика истечения срока лицензии.
+    r69129 | amesk | 2008-02-28 16:51:55 +0300 (Чт, 28 фев 2008) | 1 line
+    NAVTECH-162. Улучшена диагностика истечения срока лицензии.
+    r69202 | amesk | 2008-03-05 19:06:01 +0300 (Ср, 05 мар 2008) | 1 line
+    NAVTECH-162. Новая версия библиотек TSL.
+* Merged revisions 69203 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69203 | amesk | 2008-03-05 23:30:14 +0300 (Ср, 05 мар 2008) | 1 line
+    Введен новый флаг инициализированности NMModule. Для 
+  неинициализированных модулей процедура деинициализации не вызывается.
+* Merged revisions 69214 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69214 | amesk | 2008-03-06 18:09:04 +0300 (Чт, 06 мар 2008) | 1 line
+    NAVTECH-1059. Введено управление яркостью отображения для VPort 351. 
+  При этом осуществлен переход на версию 2.1 VPortSDK+.
+* Merged revisions 69215 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69215 | amesk | 2008-03-06 18:13:27 +0300 (Чт, 06 мар 2008) | 1 line
+    Восстановление переключения страниц по Tab.
+
+Build 1.11.005.0883 (69182:69204) at 2008-03-06 02:36:32
+--------------------------------------------------------
+
+* Merged revisions 69185 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69185 | krush | 2008-03-05 13:20:40 +0300 (Ср, 05 мар 2008) | 2 lines
+    NAVTECH-908
+    Также исправлена ошибка с несовпадением фактического значения графика 
+  и его значения на вертикальной шкале
+* Merged revisions 69189 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69189 | zhukser | 2008-03-05 16:39:34 +0300 (Ср, 05 мар 2008) | 1 line
+    NAVTECH-1058
+* Merged revisions 69192 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69192 | amesk | 2008-03-05 17:12:12 +0300 (Ср, 05 мар 2008) | 1 line
+    NAVTECH-1014. Изменен способ выявления режима работы инсталляции.
+* NAVTECH-1035. Патч от Константина Волынского.
+  Index: Assist/Packages/AtomDB/atomdb.mak
+  ===================================================================
+  --- Assist/Packages/AtomDB/atomdb.mak	(revision 69104)
+  +++ Assist/Packages/AtomDB/atomdb.mak	(working copy)
+  @@ -1,2 +1,2 @@
+   PACKAGE     := AtomDB
+  -PACKAGE_VER := 2.00.007.1011
+  \ No newline at end of file
+  +PACKAGE_VER := 2.00.007.1013
+  \ No newline at end of file
+  Index: Assist/Packages/ChartAssistant/CA.mak
+  ===================================================================
+  --- Assist/Packages/ChartAssistant/CA.mak	(revision 69104)
+  +++ Assist/Packages/ChartAssistant/CA.mak	(working copy)
+  @@ -1,2 +1,2 @@
+   PACKAGE     := ChartAssistant
+  -PACKAGE_VER := 1.04.009.1100
+  +PACKAGE_VER := 1.04.009.1103
+  Index: Assist/Packages/ETL/etl.mak
+  ===================================================================
+  --- Assist/Packages/ETL/etl.mak	(revision 69104)
+  +++ Assist/Packages/ETL/etl.mak	(working copy)
+  @@ -1,2 +1,2 @@
+   PACKAGE     := ETL
+  -PACKAGE_VER := 2.00.007.1011
+  +PACKAGE_VER := 2.00.007.1013
+  Index: Assist/Packages/Horus/horus.mak
+  ===================================================================
+  --- Assist/Packages/Horus/horus.mak	(revision 69104)
+  +++ Assist/Packages/Horus/horus.mak	(working copy)
+  @@ -1,2 +1,2 @@
+   PACKAGE     := Horus
+  -PACKAGE_VER := 2.00.007.1011
+  +PACKAGE_VER := 2.00.007.1013
+  Index: Assist/Packages/HorusNet/horusnet.mak
+  ===================================================================
+  --- Assist/Packages/HorusNet/horusnet.mak	(revision 69104)
+  +++ Assist/Packages/HorusNet/horusnet.mak	(working copy)
+  @@ -1,2 +1,2 @@
+   PACKAGE     := HorusNet
+  -PACKAGE_VER := 2.00.007.1011
+  +PACKAGE_VER := 2.00.007.1013 
+* Merged revisions 69130 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69130 | amesk | 2008-02-28 16:52:56 +0300 (Чт, 28 фев 2008) | 1 line
+    NAVTECH-1051
+
+Build 1.11.005.0882 (69149:69181) at 2008-03-05 02:31:40
+--------------------------------------------------------
+
+* NAVTECH-902
+* NAVTECH-970
+* Исправлено значение требуемого дискового пространства
+* NAVTECH-1042 Новый алгоритм переключения шкал. (merged revisions 69154, 
+  69149, 69142, 69041)
+  Сопутственные исправления - исправлена инсталляция, исправлены проекты 
+  LS_All, Packages.
+* Merged revisions 69164 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69164 | amesk | 2008-03-03 19:40:48 +0300 (Пн, 03 мар 2008) | 2 lines
+    NAVTECH-1033. Убрано появляющееся на старте системы сообщение об 
+  использовании карт S-57.
+* NAVTECH-1036
+* Алексей Захаров: NAVTECH-850 и отладочная печать об аллокаторах ETL
+* cosmetics
+* Исправлены последствия конфликта
+* Merged revisions 69178 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69178 | amesk | 2008-03-04 15:29:16 +0300 (Вт, 04 мар 2008) | 1 line
+    Новый desktop от Димы Евстигнеева.
+
+Build 1.11.005.0881 (69148:69148) at 2008-03-03 02:33:09
+--------------------------------------------------------
+
+
+Build 1.11.005.0880 (69147:69147) at 2008-03-02 02:34:27
+--------------------------------------------------------
+
+
+Build 1.11.005.0879 (69134:69146) at 2008-03-01 02:39:22
+--------------------------------------------------------
+
+* Merged revisions 69136 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69136 | avm | 2008-02-29 11:27:36 +0300 (Пт, 29 фев 2008) | 1 line
+    NAVTECH-1048
+
+Build 1.11.005.0878 (69118:69133) at 2008-02-29 02:11:12
+--------------------------------------------------------
+
+* NAVTECH-1045 Vector resizing success checking added. (Merged from trunk, 
+  rev.69122)
+
+Build 1.11.005.0877 (69102:69117) at 2008-02-28 02:11:05
+--------------------------------------------------------
+
+* NAVTECH-952. Несвоевременное уведомление об изменении списка карт под 
+  кораблем. Приводило к тому, что на MIP пропадало имя главной карты.
+* Merged revisions 68962 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68962 | krush | 2008-02-18 16:07:33 +0300 (Пн, 18 фев 2008) | 1 line
+    NAVTECH-897
+* NAVTECH-1028 SysConfig current directory restoring added.
+* NAVTECH-1028 SysCfg file browsing bug fixed.
+
+Build 1.11.005.0876 (69080:69101) at 2008-02-27 02:30:43
+--------------------------------------------------------
+
+* Merged revisions 69082 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r69082 | avm | 2008-02-26 11:13:25 +0300 (Вт, 26 фев 2008) | 1 line
+    NAVTECH-1038
+* Владимир Фоменко: NAVTECH-1020
+* Crash Navi-Planner при попытки удаления расписания.
+  http://jira.transas.com/browse/NAVTECH-1040
+* SC-NAV-007 Final Release-2008 
+  Падение NaviPilot на выходе.
+
+Build 1.11.005.0875 (69077:69079) at 2008-02-26 02:07:23
+--------------------------------------------------------
+
+

@@ -1,0 +1,334 @@
+Working on https://svn.transas.com/navtech-primary/htibs/branches/release-1.11.005 ...
+Build 1.11.005.0841 (68409:68445) at 2008-01-10 02:36:19
+--------------------------------------------------------
+
+* Merged revisions 68395-68400,68402-68404,68406-68414 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68395 | zhukser | 2007-12-28 15:01:16 +0300 (Пт, 28 дек 2007) | 1 line
+    Engine вынесен в отдельный класс реализацию
+    r68396 | zhukser | 2007-12-28 15:02:41 +0300 (Пт, 28 дек 2007) | 1 line
+    NAVTECH-557 (c) vadimo
+    r68410 | zhukser | 2007-12-29 03:22:03 +0300 (Сб, 29 дек 2007) | 1 line
+    восстановлена работоспособность Property диалога для Engine/Engine21
+    r68414 | amesk | 2007-12-29 13:25:34 +0300 (Сб, 29 дек 2007) | 1 line
+    NAVTECH-557. Внедрение control'a Engine21 в инсталляцию и template'ы.
+* Откат неудачного merge'a в r68416.
+* Merged revisions 68395-68400,68402-68404,68406-68414 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68395 | zhukser | 2007-12-28 15:01:16 +0300 (Пт, 28 дек 2007) | 1 line
+    Engine вынесен в отдельный класс реализацию
+    r68396 | zhukser | 2007-12-28 15:02:41 +0300 (Пт, 28 дек 2007) | 1 line
+    NAVTECH-557 (c) vadimo
+    r68410 | zhukser | 2007-12-29 03:22:03 +0300 (Сб, 29 дек 2007) | 1 line
+    восстановлена работоспособность Property диалога для Engine/Engine21
+    r68414 | amesk | 2007-12-29 13:25:34 +0300 (Сб, 29 дек 2007) | 1 line
+    NAVTECH-557. Внедрение control'a Engine21 в инсталляцию и template'ы.
+* Merged revisions 68419 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68419 | amesk | 2007-12-29 17:32:52 +0300 (Сб, 29 дек 2007) | 1 line
+    Новый layout от Димы Евстигнеева.
+* Синхронизация со стволовой веткой: 1.namespace DBInitNames переименован 
+  в namespace NAtoms 2.namespace NNsTargets переименован в namespace NTgt
+* При подключении датчика Time не должен отображаться индикатор itegrity 
+  check для UTC (IC выключен в system configuration)
+* NAVTECH-615: переименован ярлык Sailor'а
+* Панель Navigation. Если Stw+Drift не используется, то поля ввода 
+  значений должны находится в загрееном состоянии, в них отображается дрейф, 
+  расчитанный согласно используемым парам HDG\STW и COG\SOG.  
+  (http://jira.transas.com/browse/NAVTECH-437)
+* NAVTECH-846: 1. исправлена очень старая ошибка, при которой вообще 
+  никогла не рисовалис треки для целей, которые создавались в ADB ДО 
+  инициализации слоя треков.
+  2. По согласованию с А.Сосонкиным для неподвижных (или малоподвижных) 
+  целей типа AIS-BaseSation & AIS-ATON треки теперь не рисуем.
+* Merged revisions 68439 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68439 | amesk | 2008-01-09 18:25:10 +0300 (Ср, 09 янв 2008) | 1 line
+    Восстановлена работоспособности индикатора угла перекладки руля 
+  (перенос из navtech-layout'a).
+
+Build 1.11.005.0840 (68389:68408) at 2007-12-29 02:47:25
+--------------------------------------------------------
+
+
+Build 1.11.005.0839 (68366:68388) at 2007-12-28 02:39:43
+--------------------------------------------------------
+
+* Merged revisions 68374,68376 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68374 | dimcus | 2007-12-27 14:18:06 +0300 (Чт, 27 дек 2007) | 1 line
+    Исправлена ошибка в конфигурации (панель Radar/Scanner)
+    r68376 | dimcus | 2007-12-27 14:55:25 +0300 (Чт, 27 дек 2007) | 1 line
+    В инсталляцию продукта добавлена библиотека RadarScansGUI.dll
+* NAVTECH-838 ALARM_STATION sensor type changed to Occasional from 
+  Permanent. Because it is really Occasional. Merged from trunk (rev. 68382).
+* NAVTECH-837 UPS sensor monitoring changed in NetInspector. Merged from 
+  trunk (rev. 68385)
+
+Build 1.11.005.0838 (68341:68365) at 2007-12-27 02:41:22
+--------------------------------------------------------
+
+* Merged revisions 68348 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68348 | dimcus | 2007-12-26 14:28:47 +0300 (Ср, 26 дек 2007) | 1 line
+    Исправлены сплэшскирины (NAVTECH-566)
+* Merged revisions 68354 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68354 | avm | 2007-12-26 17:05:10 +0300 (Ср, 26 дек 2007) | 1 line
+    NAVTECH-832
+* NAVTECH-833 Palette update bug fixed in NetInspector. Merged from trunk 
+  (rev. 68359)
+* NAVTECH-839 Local station indication added. Merged from trunk (rev. 
+  68316)
+
+Build 1.11.005.0837 (68276:68340) at 2007-12-26 02:42:32
+--------------------------------------------------------
+
+* NAVTECH-819. Добавлена поддержка лицензионной опции 822.
+* NAVTECH-811. Интеграция в инсталляцию.
+* NAVTECH-811. Интеграция в инсталляцию. Добавлены пропущенные файлы.
+* NAVTECH-833 Palette update bug fixed in NetInspector. Merged from trunk 
+  (rev. 68318)
+* NaviNet 197
+  Horus,ETL, AtomDB, HorusNet 1002
+  ChartAssistant 1090
+* Merged revisions 68282 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68282 | avm | 2007-12-24 13:05:36 +0300 (Пн, 24 дек 2007) | 1 line
+    NAVTECH-820
+* NAVTECH-526 Some cosmetic changes of Ship Settings page in SysConfig. 
+  Merged from trunk (rev. 68328)
+* NAVTECH-553. Функциональность backup/restore - для нового способа 
+  хранения конфигурации Conning.
+* Merged revisions 68332 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68332 | amesk | 2007-12-25 18:56:04 +0300 (Вт, 25 дек 2007) | 2 lines
+    Исправление проблемы с восстановлением двоичных файлов из backup'а. 
+  Предположительно - ошибка в STL/Runtime.
+    Если первым байтом записываемого блока идет FF и это первая порция 
+  данных, перед которой должен быть сброс на диск кеша, то FF теряется.
+
+Build 1.11.005.0836 (68274:68275) at 2007-12-24 02:36:50
+--------------------------------------------------------
+
+
+Build 1.11.005.0835 (68269:68273) at 2007-12-23 02:39:26
+--------------------------------------------------------
+
+* NAVTECH-516. Вставить новые библиотеки защиты в спец. ветку продукта 
+  Navi-Pilot. Создание новой версии пакета LcWrap#3. В TSL 2.14.050.1 
+  обнаружена критическая ошибка.
+
+Build 1.11.005.0834 (68234:68268) at 2007-12-22 02:46:57
+--------------------------------------------------------
+
+* Revision: 68240
+  Author: amesk
+  Date: 14:40:33, 21 декабря 2007 г.
+  Message:
+  NAVTECH-548. Upload functionality.
+  Проведены изменения в "забытом" DataTool.ini под MFD, аналогичные 
+  проведенным для TINS ревизией раньше.
+  Modified : /htibs/trunk/Assist/Product/MFD/DataTool.ini
+  Revision: 68239
+  Author: amesk
+  Date: 14:17:12, 21 декабря 2007 г.
+  Message:
+  NAVTECH-548. Upload functionality.
+  Новая реализация составной конфигурации через упаковку/распаковку "на 
+  лету" с помощью DataTool.
+  Обеспечивается полная обратная совместимость с предыдущим способом 
+  конфигурирования.
+  Modified : /htibs/trunk/Application/Standalone/Conning/Makefile
+  Modified : /htibs/trunk/Assist/Product/MFD/WDataTool50B.cfg
+  Modified : /htibs/trunk/Assist/Product/TINS/DataTool.ini
+  Modified : /htibs/trunk/Assist/Product/TINS/WDataTool50B.cfg
+  Modified : /htibs/trunk/Prj/NewDataTool.prj
+  Modified : /htibs/trunk/WindowsInstaller/Packages/MFD/MFD.wxs
+  Modified : /htibs/trunk/WindowsInstaller/Packages/TINS/TINS.wxs
+  Revision: 68238
+  Author: amesk
+  Date: 14:05:28, 21 декабря 2007 г.
+  Message:
+  NAVTECH-548.
+  Вырезаны функции работы с ненужным более magic.txt и произведена 
+  небольшая чистка от мертвого кода.
+  Modified : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/ConningIInte
+  rnalFolderAccess.cpp
+  Modified : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/zipconfig.cp
+  p
+  Modified : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/zipconfig.h
+  Revision: 68229
+  Author: amesk
+  Date: 21:06:59, 20 декабря 2007 г.
+  Message:
+  NAVTECH-548.
+  Сделана наскоро работающая удаление "файла" conning.dat на целевых 
+  машинах (для передачи для дальнейшей доводки Жукову). 
+  Modified : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/ConningIInte
+  rnalFolderAccess.cpp
+  Revision: 68227
+  Author: amesk
+  Date: 20:20:46, 20 декабря 2007 г.
+  Message:
+  NAVTECH-548.
+  Сделана наскоро работающая версия выкладывания "файла" conning.dat на 
+  целевые машины (для передачи для дальнейшей доводки Жукову). 
+  Modified : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/ConningIInte
+  rnalFolderAccess.cpp
+  Modified : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/zipconfig.cp
+  p
+  Revision: 68197
+  Author: zhukser
+  Date: 10:37:44, 20 декабря 2007 г.
+  Message:
+  NAVTECH-548.
+  Добавлен "особый вариант" HTTPFolder'a
+  В целом функционал тот-же, но умеет работать с conning.Dat
+  Пока что реализовано:
+  Если на внутренней панели есть папка config-files а в ней файл 
+  magic.txt, то в списке файлов появляется файл conning.dat
+  Если мы копируем с внутренней панели файл conning.dat  на внешнюю, то 
+  содержимое config-files пакуется zip'ом и передается как conning.dat
+  Если мы на внутренней панели делаем DELETE coning.dat'а, то содержимое 
+  папки config-files удаляется, а файл conning.dat из списка исчезает
+  Саму папку config-files удалить НЕЛЬЗЯ!
+  TODO:
+  Реализовать еопирование с внешней панели на внутреннюю файла conning.dat 
+  с распаковкой
+  Added : /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/ConningHTTPF
+  olderWrapper.cpp
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/ConningHTTPF
+  olderWrapper.h
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/ConningIInte
+  rnalFolderAccess.cpp
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/ConningIInte
+  rnalFolderAccess.h
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/ConningIInte
+  rnalFolders.cpp
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/ConningIInte
+  rnalFolders.h
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/makefile
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/stdafx.cpp
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/stdafx.h
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/unzip.cpp
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/unzip.h
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/zip.cpp
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/zip.h
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/zipconfig.cp
+  p
+  Added : 
+  /htibs/trunk/Application/Standalone/Conning/ConningHTTPFolders/zipconfig.h
+* Merged revisions 68248 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68248 | avm | 2007-12-21 17:44:23 +0300 (Пт, 21 дек 2007) | 1 line
+    NAVTECH-786
+* NAVTECH-825 Ship vectors bold marks turned on in Sailor. Merged from 
+  trunk (rev. 68251).
+* NAVTECH-548. Upload functionality. Убран код для работы с составной 
+  конфигурацией в старом стиле.
+* NAVTECH-548. Upload functionality. По просьбе Димы добавлена возможность 
+  подкладывать в составную конфигурацию custom splash.
+* Коэффициент усиления верхнего цвета уменьшен для улучшения визуального 
+  восприятия Layot'a.
+* Включена версия RS 5.00.002.0238.
+  NAVTECH-795, NAVTECH-792, NAVTECH-791, NAVTECH-790, NAVTECH-671
+
+Build 1.11.005.0833 (68195:68233) at 2007-12-21 02:40:00
+--------------------------------------------------------
+
+* Исправление дедлока в AlmHost (NAVTECH-752)
+* NAVTECH-792 Подкорректировано значение цвета Trails (rev. 68202)
+* NAVTECH-802. На выходе из NS система спрашивала, сохранять ли ей 
+  ManCorrOpersit.mcr.
+* Initialized merge tracking via "svnmerge" with revisions "1-68098" from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+* Merged revisions 68206 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68206 | dimcus | 2007-12-20 14:07:58 +0300 (Чт, 20 дек 2007) | 1 line
+    Исправлена инициализация скинов.
+* Merged revisions 68215 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68215 | avm | 2007-12-20 15:42:06 +0300 (Чт, 20 дек 2007) | 1 line
+    NAVTECH-820
+* Logbook: добавлено событие "MOORING MODE". NAVTECH-804
+  Merged from trunk (rev. 68214).
+* NAVTECH-805 Изменена надпись в TCS. Merge из ствола, ревизия 68219 
+  (А.Озерский)
+* Merged revisions 68218 via svnmerge from 
+  https://svn.transas.com/navtech-primary/htibs/trunk
+    r68218 | dimcus | 2007-12-20 16:04:14 +0300 (Чт, 20 дек 2007) | 1 line
+    Исправлена установка статуса элементов изменяющих position offset 
+  (NAVTECH-813)
+* Исправление ошибки, приводящей к невозможности чтения таблицы алармов.
+
+Build 1.11.005.0832 (68152:68194) at 2007-12-20 02:38:46
+--------------------------------------------------------
+
+* в CDataArrayImpl::put_ValuesIndexed  теперь поддерживается маскировка 
+  символов
+* NAVTECH-812 Исправление для правильной работы передачи прав мастера. 
+  (Rev 68142)
+* DataKeeper: исправлены ошибки, приводящие к неработоспособности 
+  DataKeeper'а. NAVTECH-788
+* Logbook: VDSS: исправлена ошибка, приводящая к нежелательным эффектам 
+  после удаления сессий DataKeeper'ом. NAVTECH-788
+* Адаптация старого кода к новой системе конфигурации. NAVTECH-369
+* Адаптация старого кода к новой системе конфигурации. NAVTECH-369
+* NAVTECH-815. DataTool подстроен под опять изменившееся положение файлов 
+  radar.rpr.
+* NAVTECH-714, NAVTECH-793 Active cursors and radar window pseudo-controls 
+  messagebox-related bug fixed. Merged from trunk (rev. 68177).
+* Адаптация старого кода к новой системе конфигурации. NAVTECH-369
+* NAVTECH-413. Периодический опрос SAAB R4 на предмет статуса LongRange. 
+  (Rev. 68181)
+* DataKeeper возвращен в систему. NAVTECH-788
+* NAVTECH-817 Data Keeper settings made available in SysConfig. Merged 
+  from trunk (rev. 68187).
+* Logbook: исправлена визуализация события "TRACK CONTROL". NAVTECH-806
+
+Build 1.11.005.0831 (68117:68151) at 2007-12-19 02:31:23
+--------------------------------------------------------
+
+* -В утилиту OleDump  добавлен  специальны формат xml для 
+  ConningOcxContainer
+  - была опечатка в примере "using"
+* NAVTECH-794 (с) vadimo
+* - DataArray вынесен в класс реализацию
+  - убраны 2 Warning'а(expression always false)
+* DataArray переписан с учетом переноса функциональности в класс реализацию
+* NAVTECH-784
+* NAVTECH-784. Адаптация нового элемента DataArray2 для использования в 
+  инсталляции.
+* NAVTECH-338.В Toolbar интегрирована новая кнопка для виртуальной 
+  клавиатуры.
+* Рефакторинг
+* Переход на новую версию пакета NSGui (5.01.0143)
+* NAVTECH-167 NetInspector services displaying bug fixed.
+
+Build 1.11.005.0830 (68101:68116) at 2007-12-18 02:28:47
+--------------------------------------------------------
+
+* NAVTECH-781. Layout оптимизирован под разрешение 1280x1024.
+
